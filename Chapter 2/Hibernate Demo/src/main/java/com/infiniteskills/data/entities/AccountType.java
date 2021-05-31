@@ -8,8 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
-@Entity
+@Entity()
 @Table(name = "ACCOUNT_TYPE")
 public class AccountType {
 
@@ -32,6 +33,9 @@ public class AccountType {
 
 	@Column(name = "CREATED_BY")
 	private String createdBy;
+	
+	@Transient	//then this properties will not be stored into DB
+	private String noStoreDBValue;
 
 	public Long getAccountTypeId() {
 		return accountTypeId;
@@ -81,4 +85,19 @@ public class AccountType {
 		this.createdBy = createdBy;
 	}
 
+	public String getNoStoreDBValue() {
+		return noStoreDBValue;
+	}
+
+	public void setNoStoreDBValue(String noStoreDBValue) {
+		this.noStoreDBValue = noStoreDBValue;
+	}
+
+	@Override
+	public String toString() {
+		return "AccountType [accountTypeId=" + accountTypeId + ", name=" + name + ", LastUpdatedDate=" + LastUpdatedDate
+				+ ", lastUpdatedBy=" + lastUpdatedBy + ", createdDate=" + createdDate + ", createdBy=" + createdBy
+				+ ", noStoreDBValue=" + noStoreDBValue + "]";
+	}
+	
 }

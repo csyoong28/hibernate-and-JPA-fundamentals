@@ -48,6 +48,7 @@ public class ApplicationWithXmlConfig {
 		type.setLastUpdatedDate(new Date());
 		type.setCreatedBy("kevinbowersox");
 		type.setLastUpdatedBy("kevinbowersox");
+		type.setNoStoreDBValue("chia_test");
 		
 		session.save(type);
 		
@@ -56,6 +57,17 @@ public class ApplicationWithXmlConfig {
 		tx.commit();
 		
 		session.close();
-
+		
+		
+		//to get from DB instead
+		AccountType typeReadFromDB = new AccountType();
+		Session sessionRead = sessionFactory.openSession();
+		sessionRead.beginTransaction();
+		
+		typeReadFromDB = (AccountType) sessionRead.get(AccountType.class, new Long(1));
+		
+		sessionRead.getTransaction().commit();
+		sessionRead.close();
+		System.out.println(typeReadFromDB);
 	}
 }
