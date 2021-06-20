@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.password">123456</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hibernatedb</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+        <property name="hbm2ddl.auto">create</property>
+        <property name="show_sql">true</property>
+        <!-- second level cache -->
+        <!-- <property name="cache.use_second_level_cache">true</property>
+        <property name="cache.use_query_cache">true</property>
+        <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property> -->
+        
+        
+        <!-- names the annotated entity class -->
+        <mapping class="com.soonyoong.youtube.javabrains.hibernate.UserDetails"/>
+        <mapping class="com.soonyoong.youtube.javabrains.hibernate.UserDetailsWithCollection"/>
+        <mapping class="com.soonyoong.youtube.javabrains.hibernate.UserDetailsWithCollectionAndPK"/>
+        <mapping class="com.soonyoong.youtube.javabrains.hibernate.Vehicle"/>
+        <mapping class="com.soonyoong.youtube.javabrains.hibernate.UserDetailsOneTo"/>
+        <mapping class="com.soonyoong.youtube.javabrains.hibernate.UserDetailsOneToMany"/>
+        <mapping class="com.soonyoong.youtube.javabrains.hibernate.VehicleBase1"/>
+        <mapping class="com.soonyoong.youtube.javabrains.hibernate.TwoWheeler1"/>
+        <mapping class="com.soonyoong.youtube.javabrains.hibernate.FourWheeler1"/>
+        <mapping class="com.soonyoong.youtube.javabrains.hibernate.VehicleBase2"/>
+        <mapping class="com.soonyoong.youtube.javabrains.hibernate.TwoWheeler2"/>
+        <mapping class="com.soonyoong.youtube.javabrains.hibernate.FourWheeler2"/>
+        <mapping class="com.soonyoong.youtube.javabrains.hibernate.VehicleBase3"/>
+        <mapping class="com.soonyoong.youtube.javabrains.hibernate.TwoWheeler3"/>
+        <mapping class="com.soonyoong.youtube.javabrains.hibernate.FourWheeler3"/>
+    </session-factory>
+</hibernate-configuration>
