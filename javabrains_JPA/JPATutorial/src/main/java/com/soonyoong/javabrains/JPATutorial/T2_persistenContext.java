@@ -20,6 +20,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 import com.soonyoong.javabrains.JPATutorial.models.Employee;
 import com.soonyoong.javabrains.JPATutorial.repository.EmployeeRepository;
@@ -37,6 +38,9 @@ public class T2_persistenContext {
 
 	@Autowired
 	EmployeeRepository employeeRepository;
+	
+	@Autowired
+	EmployeeService employeeService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(T2_persistenContext.class, args);
@@ -63,22 +67,16 @@ public class T2_persistenContext {
 			System.out.println(employeeFromDB2.get());
 		}
 		
-		updateEmployee(employeeFromDB2.get(), 20);
+		employeeService.updateEmployee(employeeFromDB2.get(), 20);
 
 	}
-	@Transactional
-	private void updateEmployeeAndAccessCard() {
-		updateEmployee(employee);
-		accessCardRepository.save(accessCard);
-	}
+//	@Transactional
+//	private void updateEmployeeAndAccessCard() {
+//		updateEmployee(employee);
+//		accessCardRepository.save(accessCard);
+//	}
 	
-	@Transactional(readOnly = true)
-	//when call this method will start transaction, and when exit will commit.
-	//need to have @EnableTransactionManagement on main class
-	private void updateEmployee(Employee employee, int age) {
-		employee.setAge(age);
-		employeeRepository.save(employee);	
-	}
+
 
 
 }
